@@ -182,36 +182,58 @@
     }
   </style>
   <script>
-    // Lazy load for tutti i tag image (fallback se non c'è già loading)
     document.addEventListener('DOMContentLoaded', function() {
+      // Lazy load
       document.querySelectorAll('img').forEach(function(img) {
         if (!img.hasAttribute('loading')) {
           img.setAttribute('loading', 'lazy');
         }
       });
-    });
-    // Lightbox
-    const lightbox = document.getElementById('lightbox-overlay');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.getElementById('lightbox-close');
-    document.querySelectorAll('.basket-gallery img, .calcio-gallery img, .edit-gallery img').forEach(img => {
-      img.addEventListener('click', function() {
-        lightboxImg.src = this.src;
-        lightbox.classList.add('active');
+      
+      // Lightbox - versione semplificata
+      const overlay = document.getElementById('lightbox-overlay');
+      const modalImg = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('lightbox-close');
+      
+      // Aggiungi click a tutte le immagini nella galleria
+      const galleryImages = document.querySelectorAll('.basket-gallery img, .calcio-gallery img, .edit-gallery img');
+      
+      galleryImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e) {
+          e.stopPropagation();
+          modalImg.src = this.src;
+          overlay.style.display = 'flex';
+          overlay.classList.add('active');
+        });
       });
-    });
-    closeBtn.addEventListener('click', function() {
-      lightbox.classList.remove('active');
-    });
-    lightbox.addEventListener('click', function(e) {
-      if (e.target === lightbox) {
-        lightbox.classList.remove('active');
+      
+      // Chiudi cliccando la X
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          overlay.style.display = 'none';
+          overlay.classList.remove('active');
+        });
       }
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        lightbox.classList.remove('active');
+      
+      // Chiudi cliccando fuori dall'immagine (sul overlay)
+      if (overlay) {
+        overlay.addEventListener('click', function(e) {
+          if (e.target === overlay) {
+            overlay.style.display = 'none';
+            overlay.classList.remove('active');
+          }
+        });
       }
+      
+      // Chiudi con tasto ESC
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          overlay.style.display = 'none';
+          overlay.classList.remove('active');
+        }
+      });
     });
   </script>
 </head>
