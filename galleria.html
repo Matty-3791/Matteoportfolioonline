@@ -125,6 +125,16 @@
       transform: scale(1.05);
     }
   </style>
+  <script>
+    // Lazy load for tutti i tag image (fallback se non c'è già loading)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('img').forEach(function(img) {
+        if (!img.hasAttribute('loading')) {
+          img.setAttribute('loading', 'lazy');
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <div class="header">
