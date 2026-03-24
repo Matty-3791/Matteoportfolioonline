@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Galleria Fotografica</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #111; color: #fff; }
+    .header {
+      width: 100%;
+      background: #222;
+      color: #fff;
+      padding: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      height: 60px;
+    }
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      padding: 8px 18px;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+    .nav a:hover {
+      background: #444;
+    }
+    .gallery {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 30px;
+      justify-items: center;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      object-fit: cover;
+      transition: transform 0.3s;
+      background: #222;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s forwards;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .edit-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+    .edit-section h2 {
+      color: #fff;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .edit-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 30px;
+      justify-items: center;
+    }
+    .edit-gallery img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      object-fit: cover;
+      transition: transform 0.3s;
+      background: #222;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s forwards;
+    }
+    .edit-gallery img:hover {
+      transform: scale(1.05);
+    }
+    .basket-section, .calcio-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+    .basket-section h2, .calcio-section h2 {
+      color: #fff;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .basket-gallery, .calcio-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 30px;
+      justify-items: center;
+    }
+    .basket-gallery img, .calcio-gallery img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      object-fit: cover;
+      transition: transform 0.3s;
+      background: #222;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s forwards;
+    }
+    .calcio-gallery img {
+      max-width: 450px;
+    }
+    .basket-gallery img:hover, .calcio-gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="galleria.html">Galleria</a>
+      <a href="contatti.html">Contatti</a>
+    </nav>
+  </div>
+  <div class="basket-section">
+    <h2>BASKET</h2>
+    <div class="basket-gallery">
+      <img src="BRY_0555.jpg" alt="BRY_0555" style="animation-delay:0.1s">
+      <img src="BRY_1378.jpg" alt="BRY_1378" style="animation-delay:0.2s">
+      <img src="BRY_1439.jpg" alt="BRY_1439" style="animation-delay:0.3s">
+      <img src="BRY_4331.jpg" alt="BRY_4331" style="animation-delay:0.4s">
+      <img src="BRY_4459.jpg" alt="BRY_4459" style="animation-delay:0.5s">
+      <img src="BRY_4591.jpg" alt="BRY_4591" style="animation-delay:0.6s">
+      <img src="BRY_4720.jpg" alt="BRY_4720" style="animation-delay:0.7s">
+      <img src="BRY_4740.jpg" alt="BRY_4740" style="animation-delay:0.8s">
+      <img src="BRY_4932.jpg" alt="BRY_4932" style="animation-delay:0.9s">
+      <img src="BRY_6702.jpg" alt="BRY_6702" style="animation-delay:1.0s">
+      <img src="BRY_7136.jpg" alt="BRY_7136" style="animation-delay:1.1s">
+      <img src="BRY_7190.jpg" alt="BRY_7190" style="animation-delay:1.2s">
+      <img src="BRY_7320.jpg" alt="BRY_7320" style="animation-delay:1.3s">
+      <img src="BRY_7325.jpg" alt="BRY_7325" style="animation-delay:1.4s">
+      <img src="BRY_7409.jpg" alt="BRY_7409" style="animation-delay:1.5s">
+      <img src="BRY_7469.jpg" alt="BRY_7469" style="animation-delay:1.6s">
+      <img src="BRY_7780.jpg" alt="BRY_7780" style="animation-delay:1.7s">
+      <img src="BRY_8134.jpg" alt="BRY_8134" style="animation-delay:1.8s">
+      <img src="BRY_8738.jpg" alt="BRY_8738" style="animation-delay:1.9s">
+      <img src="BRY_8874.jpg" alt="BRY_8874" style="animation-delay:2.0s">
+      <img src="BRY_8920.jpg" alt="BRY_8920" style="animation-delay:2.1s">
+      <img src="BRY_8971.jpg" alt="BRY_8971" style="animation-delay:2.2s">
+      <img src="BRY_9214.jpg" alt="BRY_9214" style="animation-delay:2.3s">
+      <img src="BRY_9215.jpg" alt="BRY_9215" style="animation-delay:2.4s">
+      <img src="BRY_0058.jpg" alt="BRY_0058" style="animation-delay:2.5s">
+      <img src="BRY_0143.jpg" alt="BRY_0143" style="animation-delay:2.6s">
+      <img src="BRY_0149.jpg" alt="BRY_0149" style="animation-delay:2.7s">
+      <img src="BRY_0729.jpg" alt="BRY_0729" style="animation-delay:2.8s">
+      <img src="BRY_0806.jpg" alt="BRY_0806" style="animation-delay:2.9s">
+      <img src="BRY_0808.jpg" alt="BRY_0808" style="animation-delay:3.0s">
+      <img src="BRY_0970.jpg" alt="BRY_0970" style="animation-delay:3.1s">
+      <img src="BRY_0978.jpg" alt="BRY_0978" style="animation-delay:3.2s">
+      <img src="BRY_1155.jpg" alt="BRY_1155" style="animation-delay:3.3s">
+      <img src="BRY_1173.jpg" alt="BRY_1173" style="animation-delay:3.4s">
+      <img src="BRY_1204.jpg" alt="BRY_1204" style="animation-delay:3.5s">
+      <img src="BRY_1290.jpg" alt="BRY_1290" style="animation-delay:3.6s">
+      <img src="BRY_1488.jpg" alt="BRY_1488" style="animation-delay:3.7s">
+      <img src="BRY_1496.jpg" alt="BRY_1496" style="animation-delay:3.8s">
+      <img src="BRY_7726.jpg" alt="BRY_7726" style="animation-delay:3.9s">
+      <img src="BRY_9421_1.jpg" alt="BRY_9421_1" style="animation-delay:4.0s">
+      <img src="BRY_9728.jpg" alt="BRY_9728" style="animation-delay:4.1s">
+    </div>
+  </div>
+  <div class="calcio-section">
+    <h2>CALCIO</h2>
+    <div class="calcio-gallery">
+      <img src="MAT02919.jpg" alt="MAT02919" style="animation-delay:0.1s">
+      <img src="MAT02987.jpg" alt="MAT02987" style="animation-delay:0.2s">
+      <img src="MAT03148.jpg" alt="MAT03148" style="animation-delay:0.3s">
+      <img src="MAT03190.jpg" alt="MAT03190" style="animation-delay:0.4s">
+      <img src="MAT03354.jpg" alt="MAT03354" style="animation-delay:0.5s">
+      <img src="MAT03368.jpg" alt="MAT03368" style="animation-delay:0.6s">
+      <img src="MAT03372.jpg" alt="MAT03372" style="animation-delay:0.7s">
+      <img src="MAT03392.jpg" alt="MAT03392" style="animation-delay:0.8s">
+      <img src="MAT03436.jpg" alt="MAT03436" style="animation-delay:0.9s">
+      <img src="MAT03527.jpg" alt="MAT03527" style="animation-delay:1.0s">
+    </div>
+  </div>
+  <div class="edit-section">
+    <h2>EDIT</h2>
+    <div class="edit-gallery">
+      <img src="edit/brayan%20edit%20-%20Copia.png" alt="brayan edit - Copia" style="animation-delay:5.1s">
+      <img src="edit/3.png" alt="3" style="animation-delay:5.2s">
+      <img src="edit/Bryan.png" alt="Bryan" style="animation-delay:5.3s">
+      <img src="edit/coach%20edit.png" alt="coach edit" style="animation-delay:5.4s">
+      <img src="edit/cruccia%20edit%20luci%20forti.jpg" alt="cruccia edit luci forti" style="animation-delay:5.5s">
+      <img src="edit/dani%20edit%20jpg.jpg" alt="dani edit jpg" style="animation-delay:5.6s">
+      <img src="edit/edit%20edit%20edit.jpg" alt="edit edit edit" style="animation-delay:5.7s">
+      <img src="edit/mori%20edit.png" alt="mori edit" style="animation-delay:5.8s">
+      <img src="edit/solari%20gianluca.png" alt="solari gianluca" style="animation-delay:5.9s">
+    </div>
+  </div>
+  </div>
+</body>
+</html>
