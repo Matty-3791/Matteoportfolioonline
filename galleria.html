@@ -49,6 +49,7 @@
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.7s forwards;
+      cursor: pointer;
     }
     .gallery img:hover {
       transform: scale(1.05);
@@ -78,6 +79,8 @@
     .edit-gallery img {
       width: 100%;
       max-width: 350px;
+      height: auto;
+      aspect-ratio: 1;
       border-radius: 16px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.18);
       object-fit: cover;
@@ -86,6 +89,7 @@
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.7s forwards;
+      cursor: pointer;
     }
     .edit-gallery img:hover {
       transform: scale(1.05);
@@ -109,6 +113,8 @@
     .basket-gallery img, .calcio-gallery img {
       width: 100%;
       max-width: 350px;
+      height: auto;
+      aspect-ratio: 1;
       border-radius: 16px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.18);
       object-fit: cover;
@@ -117,6 +123,7 @@
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.7s forwards;
+      cursor: pointer;
     }
     .calcio-gallery img {
       max-width: 450px;
@@ -173,18 +180,46 @@
         if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
       });
       
-      // Lightbox - SEMPLICE E DIRETTO
+      // Lightbox - CARICAMENTO PROGRESSIVO
       const overlay = document.getElementById('lightbox-overlay');
       const modalImg = document.getElementById('lightbox-img');
       const closeBtn = document.getElementById('lightbox-close');
       
-      // Apri lightbox
+      // Apri lightbox con versione full
       document.querySelectorAll('.basket-gallery img, .calcio-gallery img, .edit-gallery img').forEach(img => {
         img.addEventListener('click', function(evt) {
           evt.preventDefault();
           evt.stopPropagation();
-          console.log('Click immagine:', this.src);
-          modalImg.src = this.src;
+          
+          // Ottieni il nome del file
+          let srcFull = this.src;
+          
+          // Se esiste una versione -full, usala; altrimenti usa l'originale
+          if (!srcFull.includes('-full')) {
+            // Prova a caricare -full
+            const lastDot = srcFull.lastIndexOf('.');
+            const srcWithFull = srcFull.substring(0, lastDot) + '-full' + srcFull.substring(lastDot);
+            
+            // Mostra loading placeholder
+            modalImg.style.opacity = '0.5';
+            modalImg.src = '';
+            
+            // Prova a caricare full, altrimenti usa originale
+            const imgTest = new Image();
+            imgTest.onload = function() {
+              modalImg.src = srcWithFull;
+              modalImg.style.opacity = '1';
+            };
+            imgTest.onerror = function() {
+              modalImg.src = srcFull;
+              modalImg.style.opacity = '1';
+            };
+            imgTest.src = srcWithFull;
+          } else {
+            modalImg.src = srcFull;
+            modalImg.style.opacity = '1';
+          }
+          
           overlay.classList.add('show');
         });
       });
