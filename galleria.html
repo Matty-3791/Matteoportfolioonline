@@ -89,7 +89,7 @@
       justify-items: center;
     }
 
-    .gallery img {
+    .gallery img, .edit-gallery img, .basket-gallery img, .calcio-gallery img {
       width: 100%;
       max-width: 350px;
       height: auto;
@@ -103,11 +103,13 @@
       opacity: 0;
       transform: translateY(40px) scale(0.9);
       animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      cursor: pointer;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      user-select: none;
       border: 1px solid var(--glass-border);
     }
 
-    .gallery img:hover {
+    .gallery img:hover, .edit-gallery img:hover, .basket-gallery img:hover, .calcio-gallery img:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: 0 20px 60px rgba(49, 130, 206, 0.2);
       border-color: var(--accent);
@@ -235,7 +237,9 @@
       opacity: 0;
       transform: translateY(40px) scale(0.9);
       animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      cursor: pointer;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      user-select: none;
       border: 1px solid var(--glass-border);
     }
     .basket-gallery img:hover, .calcio-gallery img:hover {
