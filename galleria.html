@@ -291,56 +291,58 @@
       document.querySelectorAll('img').forEach(img => {
         if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
       });
-      
-      // Lightbox - CARICAMENTO PROGRESSIVO
+
+      // Lightbox semplificato e robusto
       const overlay = document.getElementById('lightbox-overlay');
       const modalImg = document.getElementById('lightbox-img');
       const closeBtn = document.getElementById('lightbox-close');
-      
-      // Apri lightbox con versione full
-      document.querySelectorAll('.basket-gallery img, .calcio-gallery img, .edit-gallery img').forEach(img => {
-        img.addEventListener('click', function(evt) {
-          evt.preventDefault();
-          evt.stopPropagation();
-          
-          // Ottieni il nome del file
-          let srcFull = this.src;
-          
-          // Se esiste una versione -full, usala; altrimenti usa l'originale
-          if (!srcFull.includes('-full')) {
-            // Prova a caricare -full
-            const lastDot = srcFull.lastIndexOf('.');
-            const srcWithFull = srcFull.substring(0, lastDot) + '-full' + srcFull.substring(lastDot);
-            
-            // Mostra loading placeholder
-            modalImg.style.opacity = '0.5';
-            modalImg.src = '';
-            
-            // Prova a caricare full, altrimenti usa originale
-            const imgTest = new Image();
-            imgTest.onload = function() {
-              modalImg.src = srcWithFull;
-              modalImg.style.opacity = '1';
-            };
-            imgTest.onerror = function() {
-              modalImg.src = srcFull;
-              modalImg.style.opacity = '1';
-            };
-            imgTest.src = srcWithFull;
-          } else {
-            modalImg.src = srcFull;
-            modalImg.style.opacity = '1';
-          }
-          
-          overlay.classList.add('show');
-        });
-      });
-      
-      // Chiudi lightbox
-      function closeLightbox() {
-        overlay.classList.remove('show');
+
+      if (!overlay || !modalImg || !closeBtn) {
+        console.error('Lightbox elements not found');
+        return;
       }
-      
+
+      console.log('Lightbox initialized');
+
+      // Funzione per aprire lightbox
+      function openLightbox(imgSrc) {
+        console.log('Opening lightbox with:', imgSrc);
+        modalImg.src = imgSrc;
+        overlay.classList.add('show');
+      }
+
+      // Funzione per chiudere lightbox
+      function closeLightbox() {
+        console.log('Closing lightbox');
+        overlay.classList.remove('show');
+        modalImg.src = '';
+      }
+
+      // Attacca event listeners alle immagini
+      function attachLightboxListeners() {
+        const allImages = document.querySelectorAll('.basket-gallery img, .calcio-gallery img, .edit-gallery img');
+        console.log('Found', allImages.length, 'images to attach listeners');
+
+        allImages.forEach((img, index) => {
+          img.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Image clicked:', index, this.src);
+            openLightbox(this.src);
+          });
+
+          // Assicurati che il cursor sia pointer
+          img.style.cursor = 'pointer';
+        });
+      }
+
+      // Attacca listeners immediatamente
+      attachLightboxListeners();
+
+      // Riattacca listeners dopo un breve delay (per sicurezza)
+      setTimeout(attachLightboxListeners, 1000);
+
+      // Event listeners per chiudere
       closeBtn.addEventListener('click', closeLightbox);
       overlay.addEventListener('click', function(e) {
         if (e.target === overlay) closeLightbox();
