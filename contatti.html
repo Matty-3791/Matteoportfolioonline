@@ -4,86 +4,264 @@
   <meta charset="UTF-8">
   <title>Contatti</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f5; color: #222; }
+    :root {
+      --primary: #1a365d;
+      --secondary: #2d3748;
+      --accent: #3182ce;
+      --light: #f7fafc;
+      --text: #2d3748;
+      --glass: rgba(255, 255, 255, 0.25);
+      --glass-border: rgba(255, 255, 255, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--light) 0%, #e2e8f0 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
     .header {
       width: 100%;
-      background: #222;
-      color: #7b7a7a;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--glass-border);
       padding: 0;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     }
+
     .nav {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 40px;
-      height: 60px;
+      height: 70px;
     }
+
     .nav a {
-      color: #fff;
+      color: var(--text);
       text-decoration: none;
       font-size: 1.1em;
-      padding: 8px 18px;
-      border-radius: 20px;
-      transition: background 0.2s;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
     }
+
     .nav a:hover {
-      background: #444;
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
     }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
     .main {
       margin-top: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 70vh;
+      min-height: 80vh;
       text-align: center;
       padding: 40px 20px;
     }
+
     .contact-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-      padding: 40px;
-      max-width: 500px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      padding: 50px;
+      max-width: 600px;
       width: 100%;
+      position: relative;
+      overflow: hidden;
     }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+    }
+
     .contact-card h1 {
-      color: #222;
-      margin-bottom: 30px;
-      font-size: 2.5em;
+      color: var(--text);
+      margin-bottom: 40px;
+      font-size: 3em;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
     }
+
+    .contact-card h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
     .contact-item {
-      margin: 20px 0;
-      padding: 15px;
-      border-radius: 8px;
-      transition: background 0.3s;
+      margin: 25px 0;
+      padding: 20px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
     }
+
+    .contact-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(49, 130, 206, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .contact-item:hover::before {
+      left: 100%;
+    }
+
     .contact-item:hover {
-      background: #f8f9fa;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.8);
     }
+
     .contact-item a {
-      color: #007bff;
+      color: var(--primary);
       text-decoration: none;
-      font-size: 1.2em;
-      font-weight: 500;
+      font-size: 1.3em;
+      font-weight: 600;
+      display: block;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
     }
+
     .contact-item a:hover {
-      text-decoration: underline;
+      color: var(--accent);
+      transform: scale(1.02);
     }
+
     .contact-icon {
-      margin-right: 10px;
-      font-size: 1.5em;
+      margin-right: 12px;
+      font-size: 1.8em;
+      vertical-align: middle;
     }
-    @media (max-width: 600px) {
-      .nav { gap: 15px; height: 50px; }
-      .main { margin-top: 80px; }
-      .contact-card { padding: 30px 20px; }
-      .contact-card h1 { font-size: 2em; }
+
+    .contact-subtitle {
+      font-size: 1.1em;
+      color: var(--secondary);
+      margin-top: 8px;
+      font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        gap: 20px;
+        height: 60px;
+      }
+
+      .nav a {
+        font-size: 1em;
+        padding: 8px 16px;
+      }
+
+      .main {
+        margin-top: 80px;
+        padding: 20px 15px;
+      }
+
+      .contact-card {
+        padding: 35px 25px;
+        margin: 20px;
+      }
+
+      .contact-card h1 {
+        font-size: 2.2em;
+      }
+
+      .contact-item {
+        margin: 20px 0;
+        padding: 18px;
+      }
+
+      .contact-item a {
+        font-size: 1.2em;
+      }
+
+      .contact-icon {
+        font-size: 1.6em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav {
+        gap: 10px;
+        height: 55px;
+      }
+
+      .hero-content {
+        gap: 30px;
+      }
+
+      .contact-card {
+        padding: 30px 20px;
+      }
+
+      .contact-card h1 {
+        font-size: 1.8em;
+      }
+
+      .contact-item a {
+        font-size: 1.1em;
+      }
     }
   </style>
 </head>
@@ -101,14 +279,17 @@
       <div class="contact-item">
         <span class="contact-icon">📧</span>
         <a href="mailto:matteone112@gmail.com">matteone112@gmail.com</a>
+        <div class="contact-subtitle">Rispondo entro 24 ore</div>
       </div>
       <div class="contact-item">
         <span class="contact-icon">📱</span>
         <a href="tel:3270006141">327 000 6141</a>
+        <div class="contact-subtitle">Disponibile per collaborazioni</div>
       </div>
       <div class="contact-item">
         <span class="contact-icon">📸</span>
-        <a href="https://www.instagram.com/pixel_m_perfetto" target="_blank">pixel_m_perfetto</a>
+        <a href="https://www.instagram.com/pixel_m_perfetto" target="_blank">@pixel_m_perfetto</a>
+        <div class="contact-subtitle">Seguimi per aggiornamenti</div>
       </div>
     </div>
   </div>
