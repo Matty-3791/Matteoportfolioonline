@@ -133,15 +133,22 @@
     .edit-gallery img {
       width: 100%;
       max-width: 350px;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       object-fit: cover;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
       cursor: pointer;
-      background: #222;
+      border: 1px solid var(--glass-border);
     }
 
     .edit-gallery img:hover {
-      box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(49, 130, 206, 0.2);
+      border-color: var(--accent);
     }
     .basket-section, .calcio-section {
       margin-top: 80px;
@@ -163,15 +170,22 @@
     .basket-gallery img, .calcio-gallery img {
       width: 100%;
       max-width: 350px;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       object-fit: cover;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
       cursor: pointer;
-      background: #222;
+      border: 1px solid var(--glass-border);
     }
 
     .basket-gallery img:hover, .calcio-gallery img:hover {
-      box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(49, 130, 206, 0.2);
+      border-color: var(--accent);
     }
     .lightbox-overlay {
       display: none;
