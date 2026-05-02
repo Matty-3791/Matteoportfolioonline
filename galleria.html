@@ -21,7 +21,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+      background: #000000;
       color: #fff;
       line-height: 1.6;
       min-height: 100vh;
@@ -112,7 +112,7 @@
     .gallery img:hover, .edit-gallery img:hover, .basket-gallery img:hover, .calcio-gallery img:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: 0 20px 60px rgba(49, 130, 206, 0.2);
-      border-color: var(--accent);
+      border-color: #3182ce;
     }
 
     @keyframes fadeInUp {
@@ -193,19 +193,20 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       object-fit: cover;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: var(--glass);
-      backdrop-filter: blur(10px);
+      background: #222;
       opacity: 0;
       transform: translateY(40px) scale(0.9);
       animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      cursor: pointer;
-      border: 1px solid var(--glass-border);
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      user-select: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .edit-gallery img:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: 0 20px 60px rgba(49, 130, 206, 0.2);
-      border-color: var(--accent);
+      border-color: #3182ce;
     }
     .basket-section, .calcio-section {
       margin-top: 80px;
@@ -232,20 +233,19 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       object-fit: cover;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: var(--glass);
-      backdrop-filter: blur(10px);
+      background: #222;
       opacity: 0;
       transform: translateY(40px) scale(0.9);
       animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       cursor: pointer !important;
       pointer-events: auto !important;
       user-select: none;
-      border: 1px solid var(--glass-border);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     .basket-gallery img:hover, .calcio-gallery img:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: 0 20px 60px rgba(49, 130, 206, 0.2);
-      border-color: var(--accent);
+      border-color: #3182ce;
     }
     .lightbox-overlay {
       display: none;
