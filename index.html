@@ -186,13 +186,23 @@
     .profile-img {
       width: 320px;
       max-width: 90vw;
-      border-radius: 20px;
+      height: 320px;
+      border-radius: 28px;
       margin: 30px 0 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      padding: 24px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .profile-img img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
       object-fit: contain;
-      display: inline-block;
-      background: transparent;
-      padding: 0;
-      border: none;
+      border-radius: 16px;
     }
     h1 {
       font-size: 2.5em;
@@ -372,7 +382,7 @@
     <div class="hero-content">
       <div class="profile-section">
         <div class="profile-img">
-          <img src="ChatGPT Image 16 feb 2026, 18_40_41.png" alt="Logo MF" width="320" height="320" loading="eager">
+          <img src="home-logo.png" alt="Logo MF" width="320" height="320" loading="eager">
         </div>
       </div>
 
