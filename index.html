@@ -196,57 +196,7 @@
       box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
     }
 
-    .collaborations {
-      position: absolute;
-      left: 40px;
-      top: 150px;
-      text-align: left;
-      width: 250px;
-      opacity: 0;
-      animation: fadeInUp 1s ease-out 0.5s forwards;
-    }
-
-    .collaborations h3 {
-      font-size: 1.2em;
-      margin: 0 0 20px 0;
-      padding: 0;
-      color: var(--primary);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .collaborations ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .collaborations li {
-      font-size: 0.95em;
-      color: var(--text);
-      background: var(--glass);
-      backdrop-filter: blur(10px);
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-    }
-
-    .collaborations li:hover {
-      transform: translateX(5px);
-      background: rgba(255, 255, 255, 0.4);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    .collaborations li::before {
-      content: '🏆';
-      margin-right: 8px;
-    }
+    /* collaborations section removed */
 
     @media (max-width: 1024px) {
       .hero-content {
@@ -255,7 +205,6 @@
         text-align: center;
       }
       .text-content { text-align: center; }
-      .collaborations { position: static; width: 100%; margin-bottom: 40px; }
       h1 { font-size: 2.8em; }
     }
 
@@ -267,9 +216,7 @@
       h1 { font-size: 2.2em; }
       .subtitle { font-size: 1.2em; }
       .description { font-size: 1em; }
-      .collaborations { margin-bottom: 30px; }
-      .collaborations ul { gap: 8px; }
-      .collaborations li { padding: 10px 15px; font-size: 0.9em; }
+      /* collaborations styles removed */
     }
 
     @media (max-width: 480px) {
@@ -279,6 +226,45 @@
       h1 { font-size: 1.8em; }
       .subtitle { font-size: 1.1em; }
       .cta-button { padding: 12px 24px; font-size: 1em; }
+    }
+
+    /* Partners slider */
+    .partners-slider {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      padding: 12px 6px;
+      background: transparent;
+      border-radius: 12px;
+    }
+    .partners-slider::-webkit-scrollbar { height: 8px; }
+    .partners-slider::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 8px; }
+
+    .partners-track {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding-bottom: 6px;
+    }
+
+    .partners-track img {
+      width: 180px;
+      height: 80px;
+      object-fit: contain;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .partners-track img:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(15,23,42,0.12); }
+
+    @media (max-width: 768px) {
+      .partners-track img { width: 140px; height: 64px; }
+    }
+    @media (max-width: 480px) {
+      .partners-track img { width: 120px; height: 56px; }
     }
   </style>
 </head>
@@ -292,16 +278,6 @@
   </div>
 
   <div class="main">
-    <div class="collaborations">
-      <h3>Esperienze</h3>
-      <ul>
-        <li>Mille miglia 2023</li>
-        <li>Garda lakers</li>
-        <li>NBB Mazzano</li>
-        <li>Basket+</li>
-      </ul>
-    </div>
-
     <div class="hero-content">
       <div class="profile-section">
         <div class="profile-img">
@@ -320,5 +296,45 @@
     </div>
   </div>
 
+  <div class="partners-section" style="width:100%; display:flex; justify-content:center; padding:40px 20px;">
+    <div style="max-width:1200px; width:100%;">
+      <h3 style="color:var(--primary); margin:0 0 16px 8px; font-size:1.1em; text-transform:uppercase; letter-spacing:1px">Partner</h3>
+      <div class="partners-slider" id="partnersSlider" aria-label="Loghi partner">
+        <div class="partners-track">
+          <img src="partners/basket + log.png" alt="basket + log">
+          <img src="partners/garda logo originale.png" alt="Garda">
+          <img src="partners/images-fotor-bg-remover-20260713162221.png" alt="logo1">
+          <img src="partners/images-fotor-bg-remover-20260713162420.png" alt="logo2">
+          <img src="partners/nbb logo.png" alt="NBB">
+          <img src="partners/sereno summer logo-fotor-bg-remover-20260713162038.png" alt="sereno">
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+</body>
+  <script>
+    (function(){
+      const slider = document.getElementById('partnersSlider');
+      if(!slider) return;
+      let playing = true;
+      const step = 220; // pixels to scroll each tick
+      const intervalMs = 2500;
+      let timer = null;
+
+      function tick(){
+        if(!playing) return;
+        slider.scrollBy({ left: step, behavior: 'smooth' });
+        if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10){
+          // small timeout to let smooth scroll finish
+          setTimeout(()=> slider.scrollTo({ left: 0, behavior: 'smooth' }), 600);
+        }
+      }
+
+      slider.addEventListener('mouseenter', ()=> playing = false);
+      slider.addEventListener('mouseleave', ()=> playing = true);
+
+      timer = setInterval(tick, intervalMs);
+    })();
+  </script>
 </html>
