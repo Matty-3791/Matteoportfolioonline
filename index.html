@@ -85,7 +85,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 80vh;
+      min-height: unset;
       text-align: center;
       position: relative;
       padding: 40px 20px;
@@ -294,25 +294,24 @@
         <a href="galleria.html" class="cta-button">Scopri il mio lavoro →</a>
       </div>
     </div>
-  </div>
 
-  <div class="partners-section" style="width:100%; display:flex; justify-content:center; padding:40px 20px;">
-    <div style="max-width:1200px; width:100%;">
-      <h3 style="color:var(--primary); margin:0 0 16px 8px; font-size:1.1em; text-transform:uppercase; letter-spacing:1px">Partner</h3>
-      <div class="partners-slider" id="partnersSlider" aria-label="Loghi partner">
-        <div class="partners-track">
-          <img src="partners/basket + log.png" alt="basket + log" loading="lazy" width="512" height="512">
-          <img src="partners/garda logo originale.png" alt="Garda" loading="lazy" width="923" height="923">
-          <img src="partners/images-fotor-bg-remover-20260713162221.png" alt="logo1" loading="lazy" width="447" height="447">
-          <img src="partners/images-fotor-bg-remover-20260713162420.png" alt="logo2" loading="lazy" width="447" height="447">
-          <img src="partners/nbb logo.png" alt="NBB" loading="lazy" width="442" height="452">
-          <img src="partners/sereno summer logo-fotor-bg-remover-20260713162038.png" alt="sereno" loading="lazy" width="448" height="446">
+    <div class="partners-section" style="width:100%; display:flex; justify-content:center; padding:24px 20px; margin-top:28px;">
+      <div style="max-width:1200px; width:100%;">
+        <h3 style="color:var(--primary); margin:0 0 16px 8px; font-size:1.1em; text-transform:uppercase; letter-spacing:1px">Partner</h3>
+        <div class="partners-slider" id="partnersSlider" aria-label="Loghi partner">
+          <div class="partners-track">
+            <img src="partners/basket + log.png" alt="basket + log" loading="lazy" width="512" height="512">
+            <img src="partners/garda logo originale.png" alt="Garda" loading="lazy" width="923" height="923">
+            <img src="partners/images-fotor-bg-remover-20260713162221.png" alt="logo1" loading="lazy" width="447" height="447">
+            <img src="partners/images-fotor-bg-remover-20260713162420.png" alt="logo2" loading="lazy" width="447" height="447">
+            <img src="partners/nbb logo.png" alt="NBB" loading="lazy" width="442" height="452">
+            <img src="partners/sereno summer logo-fotor-bg-remover-20260713162038.png" alt="sereno" loading="lazy" width="448" height="446">
+          </div>
         </div>
       </div>
     </div>
   </div>
-</body>
-</body>
+
   <script>
     (function(){
       const slider = document.getElementById('partnersSlider');
@@ -337,4 +336,5 @@
       timer = setInterval(tick, intervalMs);
     })();
   </script>
+</body>
 </html>
