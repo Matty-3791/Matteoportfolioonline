@@ -89,7 +89,7 @@
       justify-items: center;
     }
 
-    .gallery img, .edit-gallery img, .basket-gallery img, .calcio-gallery img, .auto-gallery img {
+    .gallery img, .basket-gallery img, .calcio-gallery img, .auto-gallery img {
       width: 100%;
       max-width: 350px;
       height: auto;
@@ -107,7 +107,7 @@
       user-select: none;
     }
 
-    .gallery img:hover, .edit-gallery img:hover, .basket-gallery img:hover, .calcio-gallery img:hover, .auto-gallery img:hover {
+    .gallery img:hover, .basket-gallery img:hover, .calcio-gallery img:hover, .auto-gallery img:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: 0 20px 60px rgba(49, 130, 206, 0.2);
     }
@@ -144,12 +144,8 @@
       transform: translateX(-50%);
       border-radius: 2px;
     }
-    .edit-section {
-      margin-top: 80px;
-      text-align: center;
-    }
 
-    .edit-section h2, .basket-section h2, .calcio-section h2, .auto-section h2 {
+    .basket-section h2, .calcio-section h2, .auto-section h2 {
       font-size: 2.8em;
       font-weight: 700;
       margin: 60px 0 40px 0;
@@ -162,7 +158,7 @@
       position: relative;
     }
 
-    .edit-section h2::after, .basket-section h2::after, .calcio-section h2::after, .auto-section h2::after {
+    .basket-section h2::after, .calcio-section h2::after, .auto-section h2::after {
       content: '';
       position: absolute;
       bottom: -10px;
@@ -172,36 +168,6 @@
       background: linear-gradient(90deg, var(--accent), transparent);
       transform: translateX(-50%);
       border-radius: 2px;
-    }
-    .edit-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      padding: 40px 30px;
-      justify-items: center;
-    }
-
-    .edit-gallery img {
-      width: 100%;
-      max-width: 350px;
-      height: auto;
-      aspect-ratio: 1;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      object-fit: cover;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: #000000;
-      opacity: 0;
-      transform: translateY(40px) scale(0.9);
-      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      cursor: pointer !important;
-      pointer-events: auto !important;
-      user-select: none;
-    }
-
-    .edit-gallery img:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(49, 130, 206, 0.2);
     }
     .basket-section, .calcio-section, .auto-section {
       margin-top: 80px;
@@ -317,7 +283,7 @@
 
       // Attacca event listeners alle immagini
       function attachLightboxListeners() {
-        const allImages = document.querySelectorAll('.basket-gallery img, .calcio-gallery img, .edit-gallery img, .auto-gallery img');
+        const allImages = document.querySelectorAll('.basket-gallery img, .calcio-gallery img, .auto-gallery img');
         console.log('Found', allImages.length, 'images to attach listeners');
 
         allImages.forEach((img, index) => {
@@ -649,17 +615,6 @@
       <img src="auto/subaru cerchio.png" data-full="auto/subaru cerchio.png" alt="subaru cerchio" style="animation-delay:5.6s" loading="lazy" width="2592" height="3888">
       <img src="auto/volante ferrari.png" data-full="auto/volante ferrari.png" alt="volante ferrari" style="animation-delay:5.7s" loading="lazy" width="3624" height="2592">
       <img src="auto/volante porche.png" data-full="auto/volante porche.png" alt="volante porche" style="animation-delay:5.8s" loading="lazy" width="3888" height="2592">
-    </div>
-  </div>
-  <div class="edit-section">
-    <h2>EDIT</h2>
-    <div class="edit-gallery">
-      <img src="edit/Bryan.png" alt="Bryan" style="animation-delay:5.2s" loading="lazy" width="1080" height="1350">
-      <img src="edit/coach edit.png" alt="coach edit" style="animation-delay:5.3s" loading="lazy" width="1080" height="1350">
-      <img src="edit/cruccia edit luci forti.jpg" alt="cruccia edit luci forti" style="animation-delay:5.4s" loading="lazy" width="4000" height="6000">
-      <img src="edit/dani edit jpg.jpg" alt="dani edit jpg" style="animation-delay:5.5s" loading="lazy" width="2994" height="4720">
-      <img src="edit/mori edit.png" alt="mori edit" style="animation-delay:5.6s" loading="lazy" width="1024" height="1536">
-      <img src="edit/solari gianluca.png" alt="solari gianluca" style="animation-delay:5.7s" loading="lazy" width="2667" height="4000">
     </div>
   </div>
   <!-- Lightbox Modal -->
