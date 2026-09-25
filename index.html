@@ -95,6 +95,32 @@
 
     .nav a:hover::after { width: 100%; }
 
+    .theme-toggle {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 200;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      color: var(--text);
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.25em;
+      line-height: 1;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: white;
+      transform: rotate(15deg);
+    }
+
     .main {
       margin-top: var(--header-height);
       display: flex;
@@ -288,31 +314,12 @@
 <body>
   <div class="header">
     <nav class="nav">
-    .theme-toggle {
-      border: 1px solid var(--glass-border);
-      background: transparent;
-      color: var(--text);
-      width: 42px;
-      height: 42px;
-      padding: 0;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2em;
-      line-height: 1;
-      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      background: var(--accent);
-      color: white;
-      transform: rotate(15deg);
-    }
       <a href="index.html">Home</a>
       <a href="galleria.html">Galleria</a>
       <a href="contatti.html">Contatti</a>
-      <button class="theme-toggle" type="button" id="themeToggle" aria-label="Attiva tema scuro" title="Attiva tema scuro">&#9790;</button>
     </nav>
   </div>
+  <button class="theme-toggle" type="button" id="themeToggle" aria-label="Attiva tema scuro" title="Attiva tema scuro">&#9790;</button>
 
   <div class="main">
     <div class="hero-content">
