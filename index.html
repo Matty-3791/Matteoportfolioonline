@@ -210,6 +210,50 @@
 
     /* collaborations section removed */
 
+    body.dark-theme {
+      --primary: #93c5fd;
+      --secondary: #cbd5e1;
+      --accent: #60a5fa;
+      --light: #0f172a;
+      --text: #e2e8f0;
+      --glass: rgba(15, 23, 42, 0.82);
+      --glass-border: rgba(148, 163, 184, 0.18);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    body.dark-theme .header {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark-theme .partners-track img {
+      background: #e2e8f0;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 200;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      color: var(--text);
+      font-size: 1.35em;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 1024px) {
       .hero-content {
         flex-direction: column;
@@ -282,6 +326,8 @@
   </style>
 </head>
 <body>
+  <button class="theme-toggle" type="button" aria-label="Attiva tema scuro" title="Attiva tema scuro">☾</button>
+
   <div class="header">
     <nav class="nav">
       <a href="index.html">Home</a>
@@ -323,6 +369,28 @@
 
   <script>
     (function(){
+      const toggle = document.querySelector('.theme-toggle');
+
+      function applyTheme(theme) {
+        const isDark = theme === 'dark';
+        document.body.classList.toggle('dark-theme', isDark);
+        toggle.textContent = isDark ? '☀' : '☾';
+        toggle.setAttribute('aria-label', isDark ? 'Attiva tema chiaro' : 'Attiva tema scuro');
+        toggle.setAttribute('title', isDark ? 'Attiva tema chiaro' : 'Attiva tema scuro');
+      }
+
+      applyTheme(localStorage.getItem('portfolio-theme') || 'light');
+
+      toggle.addEventListener('click', function(){
+        const theme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
+        localStorage.setItem('portfolio-theme', theme);
+        applyTheme(theme);
+      });
+
+      window.addEventListener('storage', function(event){
+        if (event.key === 'portfolio-theme') applyTheme(event.newValue || 'light');
+      });
+
       const slider = document.getElementById('partnersSlider');
       if(!slider) return;
       let playing = true;
