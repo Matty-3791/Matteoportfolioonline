@@ -116,7 +116,7 @@
     }
 
     .profile-section {
-      flex: 0 0 380px;
+      flex: 0 0 430px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -124,9 +124,9 @@
     }
 
     .profile-img {
-      width: 380px;
+      width: 430px;
       max-width: 90vw;
-      height: 380px;
+      height: 296px;
       border-radius: 28px;
       margin: 0 0 20px 0;
       display: flex;
@@ -149,9 +149,7 @@
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
-      object-position: 68% 50%;
-      transform: translateX(30px);
+      object-fit: contain;
       border-radius: 18px;
     }
 
@@ -219,7 +217,6 @@
         text-align: center;
       }
       .profile-section { flex: 0 0 auto; }
-      .profile-img img { transform: translateX(0); }
       .text-content { flex: 0 0 auto; text-align: center; }
       h1 { font-size: 2.8em; }
     }
@@ -228,7 +225,7 @@
       .nav { gap: 20px; height: 60px; }
       .nav a { font-size: 1em; padding: 8px 16px; }
       .main { margin-top: 80px; padding: 20px 15px; }
-      .profile-img { width: 240px; height: 240px; }
+      .profile-img { width: 300px; height: 207px; }
       h1 { font-size: 2.2em; }
       .subtitle { font-size: 1.2em; }
       .description { font-size: 1em; }
@@ -238,7 +235,7 @@
     @media (max-width: 480px) {
       .nav { gap: 10px; height: 55px; }
       .hero-content { gap: 30px; }
-      .profile-img { width: 180px; height: 180px; }
+      .profile-img { width: 240px; height: 165px; }
       h1 { font-size: 1.8em; }
       .subtitle { font-size: 1.1em; }
       .cta-button { padding: 12px 24px; font-size: 1em; }
@@ -297,7 +294,7 @@
     <div class="hero-content">
       <div class="profile-section">
         <div class="profile-img">
-          <img src="./logo-home.png" alt="Logo MF" width="1024" height="1024" loading="eager">
+          <img src="./logo-home.png" alt="Logo MF" width="430" height="296" loading="eager">
         </div>
       </div>
 
